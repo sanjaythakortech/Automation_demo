@@ -1,0 +1,282 @@
+
+
+:root {
+    font-family: Inter, Arial, sans-serif;
+    color: #1f2937;
+    background: #f4f7fb;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+}
+
+.container {
+    max-width: 980px;
+    margin: 40px auto;
+    padding: 0 18px 50px;
+}
+
+header {
+    margin-bottom: 24px;
+}
+
+h1 {
+    margin-bottom: 8px;
+}
+
+h2 {
+    margin-top: 0;
+    font-size: 20px;
+}
+
+.card {
+    background: #fff;
+    border: 1px solid #dfe5ec;
+    border-radius: 14px;
+    padding: 24px;
+    margin: 18px 0;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, .04);
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+}
+
+label {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.wide {
+    grid-column: 1 / -1;
+}
+
+input,
+textarea {
+    width: 100%;
+    padding: 11px 12px;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    font: inherit;
+    font-weight: 400;
+}
+
+textarea {
+    resize: vertical;
+}
+
+button,
+.download {
+    display: inline-block;
+    border: 0;
+    border-radius: 9px;
+    padding: 13px 20px;
+    background: #111827;
+    color: white;
+    font-weight: 700;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+button:hover,
+.download:hover {
+    opacity: .9;
+}
+
+.alert {
+    padding: 12px 14px;
+    border-radius: 8px;
+    background: #fee2e2;
+    color: #991b1b;
+    margin-bottom: 16px;
+}
+
+.success {
+    text-align: center;
+}
+
+.success ul {
+    text-align: left;
+    max-width: 520px;
+    margin: 20px auto;
+}
+
+@media (max-width: 700px) {
+    .grid {
+        grid-template-columns: 1fr;
+    }
+
+    .wide {
+        grid-column: auto;
+    }
+}
+
+
+.pdf-list {
+    max-width: 700px;
+    margin: 20px auto 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.pdf-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    padding: 14px 16px;
+    border: 1px solid #dfe5ec;
+    border-radius: 10px;
+    background: #f8fafc;
+    text-align: left;
+}
+
+.pdf-item span {
+    font-weight: 600;
+    word-break: break-word;
+}
+
+.generate-again {
+    display: inline-block;
+    margin-top: 10px;
+    color: #111827;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.generate-again:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 600px) {
+    .pdf-item {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .pdf-item .download {
+        text-align: center;
+    }
+}
+
+/* ============================================================
+   DYNAMIC PV PANEL SERIAL NUMBERS
+   ============================================================ */
+
+.panel-serial-section {
+    width: 100%;
+}
+
+.serial-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 14px;
+}
+
+.serial-header label {
+    display: block;
+    margin: 0;
+}
+
+.serial-help {
+    margin: 6px 0 0;
+    color: #64748b;
+    font-size: 13px;
+    font-weight: 400;
+}
+
+.serial-count {
+    flex: 0 0 auto;
+    padding: 7px 11px;
+    border: 1px solid #dfe5ec;
+    border-radius: 999px;
+    background: #f8fafc;
+    color: #111827;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.panel-serial-inputs {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.serial-input-row {
+    display: grid;
+    grid-template-columns: 42px minmax(0, 1fr);
+    align-items: center;
+    gap: 12px;
+    padding: 10px 12px;
+    border: 1px solid #dfe5ec;
+    border-radius: 10px;
+    background: #f8fafc;
+}
+
+.serial-sequence {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 42px;
+    border-radius: 8px;
+    background: #111827;
+    color: #fff;
+    font-weight: 800;
+    line-height: 1;
+}
+
+.serial-input-label {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    font-weight: 700;
+}
+
+.panel-serial-input {
+    width: 100%;
+}
+
+.serial-error {
+    min-height: 20px;
+    margin: 8px 0 0;
+    color: #b91c1c;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+@media (max-width: 600px) {
+    .serial-header {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .serial-input-row {
+        grid-template-columns: 38px minmax(0, 1fr);
+        gap: 9px;
+        padding: 8px;
+    }
+}
+
+
+/* Duplicate panel serial number */
+.serial-duplicate {
+    border: 2px solid #dc2626 !important;
+    background-color: #fff5f5 !important;
+}
+
+.serial-duplicate:focus {
+    border-color: #b91c1c !important;
+    outline: 2px solid rgba(220, 38, 38, 0.15);
+}

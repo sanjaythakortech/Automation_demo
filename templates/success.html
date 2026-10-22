@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Generated</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+    <div class="container">
+        <section class="card success">
+
+            <h1>Documents Generated</h1>
+
+            <p>Your PDF documents are ready.</p>
+
+            <h2>Download Documents</h2>
+
+            <div class="pdf-list">
+                {% for f in files %}
+                <div class="pdf-item">
+                    <span>{{ f }}</span>
+                    <a class="download"
+                        href="{{ url_for('download', filename=f) }}">
+                        Download PDF
+                    </a>
+                </div>
+                {% endfor %}
+            </div>
+
+            <a class="generate-again" href="{{ url_for('index') }}">
+                Generate another pack
+            </a>
+
+        </section>
+    </div>
+</body>
+
+</html>

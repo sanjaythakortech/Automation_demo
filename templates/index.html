@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Solar Document Automation</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+  <div class="container">
+    <header>
+      <h1 align="center" >Mbtion Solar Document Automation</h1>
+      <p align="center"  >Fill the first-page details once. The application updates the supplied document templates automatically.</p>
+    </header>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% for category, message in messages %}<div class="alert {{ category }}">{{ message }}</div>{% endfor %}
+    {% endwith %}
+<form method="post" enctype="multipart/form-data">
+      <section class="card">
+        <h2>Consumer & Application</h2>
+        <div class="grid">
+          <label>Consumer Name *<input name="consumer_name" value="{{ form.consumer_name }}" required></label>
+          <label>Consumer Number *<input name="consumer_number" value="{{ form.consumer_number }}" required></label>
+          <label class="wide">Address *<textarea name="address" rows="3" required>{{ form.address }}</textarea></label>
+          <label>Place *<input name="place" value="{{ form.place }}" required></label>
+          <label>Application Number *<input name="application_number" value="{{ form.application_number }}"
+              required></label>
+          <label>Date of Agreement *<input type="date" name="date_agreement" value="{{ form.date_agreement }}"
+              required></label>
+          <label>System Capacity (kW) *<input name="kilo_watt_capacity" placeholder="3.08 KW"
+              value="{{ form.kilo_watt_capacity }}" required></label>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>PV Module Details</h2>
+        <div class="grid">
+          <label>PV Module Capacity *<input name="pv_module_capacity" placeholder="615 Wp"
+              value="{{ form.pv_module_capacity }}" required></label>
+          <label>Number of PV Modules *<input name="number_of_modules" value="{{ form.number_of_modules }}"
+              required></label>
+          <label>PV Module Make *<input name="pv_module_make" value="{{ form.pv_module_make }}" required></label>
+          <label>Cell Manufacturer *<input name="cell_manufacturer" value="{{ form.cell_manufacturer }}"
+              required></label>
+          <label>Cell GST Invoice No.<input name="cell_gst_invoice" value="{{ form.cell_gst_invoice }}"></label>
+          <div class="wide panel-serial-section">
+            <div class="serial-header">
+              <div>
+                <label for="number_of_modules">Panel Serial Numbers *</label>
+                <p class="serial-help">Enter the number of PV modules above. The same number of serial-number fields will appear below.</p>
+              </div>
+              <span id="serialCount" class="serial-count">0 Panels</span>
+            </div>
+
+            <div id="panelSerialInputs" class="panel-serial-inputs"></div>
+
+            <p id="serialError" class="serial-error" role="alert" aria-live="polite"></p>
+          </div>
+        </div>
+      </section>
+
+
+      <section class="card">
+        <h2>Inverter Details</h2>
+        <div class="grid">
+          <label>Inverter Make *<input name="inverter_make" value="{{ form.inverter_make }}" required></label>
+          <label>Inverter Capacity *<input name="inverter_capacity" placeholder="3.00 KWP"
+              value="{{ form.inverter_capacity }}" required></label>
+              
+           <label>Inverter Model *<input name="inverter_model"  
+              value="{{ form.inverter_model }}" required></label>
+
+          <label>Inverter Serial Number *<input name="inverter_sr_no" value="{{ form.inverter_sr_no }}"
+              required></label>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>Signatures / Optional Labels</h2>
+        <div class="grid">
+          
+
+              <section class="card">
+  <h2>Document Image</h2>
+
+  <div class="grid">
+    <label class="wide">
+      Signature  *
+      <input
+        type="file"
+        name="document_image"
+        accept=".png,.jpg,.jpeg"
+        required
+      >
+    </label>
+  </div>
+</section>
+       
+            </div>
+      </section>
+
+      <button type="submit">Generate All Documents</button>
+    </form>
+  </div>
+  <!-- <script>
+    window.existingPanelSerials = {{ form.panels_serial_no|default('', true)|tojson }};
+  </script> -->
+  <script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+
+</html>
