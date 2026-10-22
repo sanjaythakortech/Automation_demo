@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: solar-document-automation
+    runtime: docker
+    plan: starter        # LibreOffice needs RAM; free (512MB) may run out
+    healthCheckPath: /health
+    envVars:
+      - key: FLASK_SECRET_KEY
+        generateValue: true
+      - key: APP_USERNAME
+        sync: false
+      - key: APP_PASSWORD
+        sync: false
